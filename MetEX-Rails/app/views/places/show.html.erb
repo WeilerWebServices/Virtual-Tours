@@ -1,0 +1,29 @@
+<% content_for :title, @place.name %>
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="jumbotron">
+	<div class="container">
+		<h1><%= @place.name %></h1>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8" id="content-station-photos">
+			<%= render partial: 'stations/carousel', locals: { images: @place.images } %>
+		</div>
+		<div class="col-md-4" id="content-place-description">
+			<p><%= @place.description %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" id="nav-place-stations">
+			<h2>Nearby stations</h2>
+			<% unless @place.stations.empty? %>
+				<ul>
+					<%= render partial: 'stations/connection', collection: @place.stations %>
+				</ul>
+			<% else %>
+				<p>No stations nearby</p>
+			<% end %>
+		</div>
+	</div>
+</div>

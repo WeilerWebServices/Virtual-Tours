@@ -1,0 +1,52 @@
+<% content_for :title, "(#{@station.line.name}) #{@station.name}" %>
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="jumbotron line-<%= @station.line.id %>">
+	<div class="container">
+		<h1><%= render partial: 'lines/line_badge', locals: { line: @station.line } %> <%= @station.name %></h1>
+	</div>
+</div>
+<div class="container-fluid line-<%= @station.line.id %>">
+	<div class="row" id="nav-station">
+		<div class="col-sm-6" id="nav-station-up">
+			<%= render partial: 'up_movement', collection: @up_movements %>
+		</div>
+		<div class="col-sm-6" id="nav-station-down">
+			<%= render partial: 'down_movement', collection: @down_movements %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8" id="content-station-photos">
+			<% if @station.images.present? %>
+				<%= render partial: 'carousel', locals: { images: @station.images } %>
+			<% else %>
+				<%= image_tag 'http://metexv2.sblorgh.org/media/images/photo-not-available.jpg', class: 'img-responsive' %>
+			<% end %>
+		</div>
+		<div class="col-md-4" id="content-station-description">
+			<%= render @station.sound if @station.sound.present? %>
+			<p><%= @station.description %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6" id="nav-station-connections">
+			<h2>Connections</h2>
+			<% if @connections %>
+				<ul>
+					<%= render partial: 'connection', collection: @connections %>
+				</ul>
+			<% else %>
+				<p>No connections</p>
+			<% end %>
+		</div>
+		<div class="col-sm-6" id="nav-station-places">
+			<h2>Places</h2>
+			<% unless @station.places.empty? %>
+				<ul>
+					<%= render partial: 'place', collection: @station.places %>
+				</ul>
+			<% else %>
+				<p>No places nearby</p>
+			<% end %>
+		</div>
+	</div>
+</div>

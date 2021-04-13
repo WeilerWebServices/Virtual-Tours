@@ -1,0 +1,34 @@
+{
+  "name": "ic-embed",
+  "version": "0.0.1",
+  "description": "ic-embed allows you communicate with your Into Cities virtual tour.",
+  "main": "dist/ic-embed.min.js",
+  "files": [
+    "dist"
+  ],
+  "author": [
+    "Durch die Stadt <support@durchdiestadt.de>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "terser src/ic-embed.js --ecma 5 --comments /^!/ --compress toplevel=true,arguments=true,booleans_as_integers=true,drop_console=true,unsafe_methods=true --mangle -o dist/ic-embed.min.js",
+    "lint": "eslint --ext .js --ignore-path .gitignore src",
+    "lintfix": "eslint --fix --ext .js --ignore-path .gitignore src"
+  },
+  "devDependencies": {
+    "eslint": "^6.8",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-compat": "^3.5",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "terser": "^4.6.12"
+  },
+  "browserslist": [
+    "> 2% in DE",
+    "last 2 versions",
+    "ie 11",
+    "not dead"
+  ]
+}

@@ -1,0 +1,19 @@
+<% content_for :title, "Lines" %>
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>Lines</h1>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="list-group">
+			<% @lines.each do |line| %>
+			<a href="<%= line_stations_path(line) %>" class="list-group-item line-<%= line.id %>">
+				<h4><%= render partial: 'line_badge', locals: { line: line } %></h4>
+				<p><%= line.description %></p>
+			</a>
+			<% end %>
+		</div>
+	</div>
+</div>

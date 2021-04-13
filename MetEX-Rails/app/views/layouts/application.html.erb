@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MétEX, the Paris Métro experience: <%= yield(:title) %></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<%= link_to raw('mét<strong>ex</strong>'), root_path, class: 'navbar-brand' %>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><%= link_to 'lines', lines_path %></li>
+					<li><%= link_to 'places', places_path %></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to 'report issue on GitHub', 'https://github.com/PkerUNO/MetEX/issues', data: { confirm: 'Please report only bugs and suggestions to do with the workings of the site and not the content. I am aware the line data and photos are out of date, these will be updated in a future version.' } %></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<%= yield %>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<p class="well well-sm text-center"><small>&copy;2005-2015 Richard Whittaker - Milestone <em><%= Rails.application.config.milestone_name %></em> - <%= link_to 'Please report any bugs on GitHub', 'https://github.com/PkerUNO/MetEX/issues', data: { confirm: 'Please report only bugs and suggestions to do with the workings of the site and not the content. I am aware the line data and photos are out of date, these will be updated in a future version.' } %></small></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
